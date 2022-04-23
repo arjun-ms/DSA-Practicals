@@ -9,10 +9,9 @@ int main(){
 	printf("Enter the item to be found: ");
 	scanf("%d",&item);
 	
-	
-	
 	while(beg<=end){
 		mid  = (beg+end)/2;
+		
 		if(a[mid]==item){
 			pos = mid+1;
 			break;
@@ -24,6 +23,7 @@ int main(){
 			beg = mid+1;
 		}
 	}
+	
 	if(pos>0)
 		printf("Element found at index %d",mid);
 }
