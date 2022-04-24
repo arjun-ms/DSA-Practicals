@@ -81,14 +81,25 @@ int findheight(struct Node* node){
 	
 }
 
+int countleafnodes(struct Node* node){
+	if(node==NULL)
+		return 0;
+		
+	else if(node->left == NULL && node->right == NULL)
+		return 1;
+	
+	else
+		return countleafnodes(node->left) + countleafnodes(node->right);
+	
+}
 
 
 int main(){
 	int choice=0,val;
 	
-	while(choice!=5)
+	while(choice!=6)
 	{
-	printf("\n1.Insert\n2.Traverse\n3.Search\n4.Height\n5.Exit\n");
+	printf("\n1.Insert\n2.Traverse\n3.Search\n4.Height\n5.No:of Leafnodes\n6.Exit\n");
         printf("Enter your Choice :");
         scanf("%d", &choice);
         switch (choice){
@@ -113,9 +124,11 @@ int main(){
             break;
         case 4:
 			printf("\nHeight of Tree: %d",findheight(root));
-            
-            break;    
+            break;  
         case 5:
+            printf("\nNo of Leafnodes of Tree: %d",countleafnodes(root));
+            break;  
+        case 6:
             printf("\nExit\n");
             break;
         default:
