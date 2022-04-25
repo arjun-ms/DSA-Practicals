@@ -35,7 +35,7 @@ int main(){
 				break;
 			}
 			default:
-				printf("Enter a valid choice: ");
+				printf("Enter a valid choice!");
 		};
 	}
 	return 0;
@@ -57,8 +57,8 @@ void deque(){
 	if(front == rear)
 		printf("Queue is empty!");
 	else{
-		front++;
-		printf("\nValue deleted ");
+		int temp = queue[++front];
+		printf("%d dequed from queue",temp);
 	}
 }
 
