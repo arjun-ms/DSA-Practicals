@@ -6,7 +6,7 @@ int n,choice=0,i,j,top=-1;
 void push();
 void pop();
 void show();
-
+void peek();
 
 void main(){
 	printf("Enter the number of elements in stack: ");
@@ -67,17 +67,24 @@ void pop(){
 }
 
 void show(){
-	for(i=top;i>=0;i--){
-		printf("%d\n",stack[i]);
-	}
 	if(top == -1)   
     {  
         printf("Stack is empty");  
     } 
-	
+	for(i=top;i>=0;i--){
+		printf("%d\n",stack[i]);
+	}
 }
 
-
+void peek(){
+	if(top == -1)   
+    {  
+        printf("Stack is empty");  
+    } 
+    else{
+		printf("\nTop: %d",top);
+	}
+}
 
 
 

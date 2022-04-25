@@ -24,7 +24,7 @@ void merge(int a[],int low,int mid,int high){
 			while(j<=high){
 				b[k]=a[j];
 				j++;
-				k++;
+				k++;	
 			}
 		}
 		else{
