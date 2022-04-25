@@ -64,6 +64,67 @@ void insertAtPos(int val,int index){
 	}
 }
 
+void deleteFromBeg(){
+	if(myll.head == NULL)
+		printf("Empty!");
+	else{
+		struct Node* temp = myll.head;
+		if(temp->next==NULL){
+			myll.head = NULL;
+			free(temp);
+		}
+		else{
+			myll.head = temp->next;
+			temp=NULL;
+		}
+	}
+}
+
+void deleteFromEnd(){
+	
+	if(myll.head==NULL)
+		printf("Empty");
+	else{
+		struct Node* temp1 = myll.head;
+		struct Node* temp2 = myll.head;
+		if(temp1->next == NULL){
+			myll.head = NULL;
+			free(temp1);
+		}
+		else{
+			
+			while(temp1->next!=NULL){
+				temp2 = temp1;
+				temp1 = temp1->next;
+			}
+			temp2->next = NULL;
+			free(temp1);
+		}
+	}
+}
+
+void deleteFromPos(int index){
+	
+	if(myll.head==NULL)
+		printf("Empty");
+	else if(index==0)
+		deleteFromBeg();
+	else{
+		struct Node* temp1 = myll.head;
+		struct Node* temp2 = myll.head;
+		int i=0;
+		while(temp1->next != NULL && i<index){
+			i++;
+			temp2 = temp1;
+			temp1 = temp1->next;
+		}
+		temp2->next = temp1->next;
+	}
+}
+
+
+
+
 void display(){
 	
 	if(myll.head==NULL)
@@ -86,23 +147,28 @@ int main(){
 	
 	int choice=0,element,index;
 	
-	while(choice!=5){
-		printf("\n1.Insert at Head \n2.Insert at Tail \n3.Display\n4.Insert at Index\n5.Exit\n");
+	while(choice!=8){
+		printf("\n1.Insert at Head \n2.Insert at Tail \n3.Display\n4.Insert at Index\n5.Delete from Beg\n6.Delete from end\n7.Delete from Pos\n8.Exit\n");
+		printf("\nEnter your choice: ");
 		scanf("%d", &choice);
 		switch(choice){
+			
 			case 1:
                     printf("\nEnter Element to be inserted: ");
                     scanf("%d",&element);
                     insertAtHead(element);
                     break;
+            
             case 2:
                     printf("\nEnter Element to be inserted: ");
                     scanf("%d",&element);
                     insertAtTail(element);
                     break;
+           
             case 3:
                     display();
                     break;
+           
             case 4:
                     printf("\nEnter Element to be inserted: ");
                     scanf("%d",&element);
@@ -110,7 +176,25 @@ int main(){
                     scanf("%d",&index);
                     insertAtPos(element, index);
                     break; 
-            case 5: printf("Exitted\n");
+            
+            case 5:
+                    deleteFromBeg();
+                    printf("\nElement deleted from beg");
+                    break;
+            
+            case 6:
+                    deleteFromEnd();
+                    printf("\nElement deleted from end");
+                    break;
+            
+            case 7:
+					printf("\nEnter Index to be deleted: ");
+                    scanf("%d",&index);
+                    deleteFromPos(index);
+                    printf("\nElement deleted from a pos");
+                    break;
+                    
+            case 8: printf("Exitted\n");
                     break;  
 		} 
 	}
